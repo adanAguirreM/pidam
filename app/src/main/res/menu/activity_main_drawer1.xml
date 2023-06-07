@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/inicio"
+            android:icon="@drawable/home_outline"
+            android:title="Inicio"/>
+
+        <item
+            android:id="@+id/slideshowFragment"
+            android:icon="@drawable/people_outline"
+            android:title="Equipos y pilotos"/>
+
+        <item
+            android:id="@+id/slideshowFragment2"
+            android:icon="@drawable/calendar_outline"
+            android:title="Ranking e historico"/>
+
+        <item
+            android:id="@+id/noticiaFragment"
+            android:icon="@drawable/newspaper_outline"
+            android:title="Noticias"/>
+
+        <item
+            android:id="@+id/mapsFragment"
+            android:icon="@drawable/map_outline"
+            android:title="Mapa"/>
+
+    </group>
+</menu>

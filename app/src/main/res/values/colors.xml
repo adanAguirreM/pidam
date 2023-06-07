@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="teal_700">#901D0972</color>
+    <color name="purple_500">#673AB7</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#D802BBA9</color>
+    <color name="purple_200">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gris">#90a4ae</color>
+    <color name="gris2">#02929F</color>
+    <color name="sinAlpha">#0002929F</color>
+    <color name="botones">#7BFFD1</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="pilotoDetail">#A49C9C9C</color>
+    <color name="red">#A47A0000</color>
+    <color name="a1">#9BC1BC</color>
+    <color name="a2">#E6EBE0</color>
+    <color name="a3">#F4F1BB</color>
+    <color name="antiguo1">#814E25</color>
+    <color name="antiguo2">#b98c65</color>
+    <color name="antiguo3">#e8dad3</color>
+    <color name="whiteSmoke">#ECE7E4</color>
+
+</resources>

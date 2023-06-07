@@ -1,0 +1,42 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.F1Fan" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryVariant">@color/teal_200</item>
+        <item name="colorOnPrimary">@color/gris</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/antiguo3</item>
+        <item name="colorSecondaryVariant">@color/pilotoDetail</item>
+        <item name="colorOnSecondary">@color/antiguo1</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:fontFamily">@font/formula1_nomral</item>
+    </style>
+
+    <style name="Theme.F1Fan.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fontFamily">@font/formula1_nomral</item>
+    </style>
+
+    <style name="Theme.F1Fan.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:fontFamily">@font/formula1_nomral</item>
+    </style>
+
+    <style name="Theme.F1Fan.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/formula1_nomral</item>
+        <item name="android:textColor">@color/whiteSmoke</item>
+    </style>
+
+    <style name="ThemeOverlay.F1Fan.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+        <item name="android:fontFamily">@font/formula1_nomral</item>
+    </style>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.F1Fan" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:fontFamily">@font/formula1_nomral</item>
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+</resources>

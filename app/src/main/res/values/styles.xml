@@ -1,0 +1,16 @@
+<resources>
+
+    <style name="Widget.Theme.F1Fan.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="android:fontFamily">@font/formula1_nomral</item>
+    </style>
+
+    <style name="navDrawer" parent="">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/pilotoDetail</item>
+        <item name="colorAccent">@color/red</item>
+        <item name="fontFamily">@font/formula1_nomral</item>
+    </style>
+</resources>

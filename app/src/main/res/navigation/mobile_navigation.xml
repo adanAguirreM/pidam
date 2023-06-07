@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/inicio">
+
+    <fragment
+        android:id="@+id/inicio"
+        android:name="com.example.f1fan.ui.Inicio"
+        android:label="fragment_inicio"
+        tools:layout="@layout/inicio" />
+    <fragment
+        android:id="@+id/slideshowFragment"
+        android:name="com.example.f1fan.ui.slideshow.SlideshowFragment"
+        android:label="fragment_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/slideshowFragment2"
+        android:name="com.example.f1fan.ui.slideshow2.SlideshowFragment2"
+        android:label="fragment_slideshow2"
+        tools:layout="@layout/fragment_slideshow2" />
+    <fragment
+        android:id="@+id/noticiaFragment"
+        android:name="com.example.f1fan.ui.noticiaView.NoticiaFragment"
+        android:label="fragment_noticia_list"
+        tools:layout="@layout/fragment_noticia_list" >
+        <action
+            android:id="@+id/action_noticiaFragment_to_slideshowFragment"
+            app:destination="@id/slideshowFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+        <action
+            android:id="@+id/action_noticiaFragment_to_inicio"
+            app:destination="@id/inicio" />
+        <action
+            android:id="@+id/action_noticiaFragment_to_slideshowFragment2"
+            app:destination="@id/slideshowFragment2" />
+        <action
+            android:id="@+id/action_noticiaFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.example.f1fan.ui.map.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_mapsFragment_to_slideshowFragment"
+            app:destination="@id/slideshowFragment" />
+        <action
+            android:id="@+id/action_mapsFragment_to_slideshowFragment2"
+            app:destination="@id/slideshowFragment2" />
+        <action
+            android:id="@+id/action_mapsFragment_to_inicio"
+            app:destination="@id/inicio" />
+        <action
+            android:id="@+id/action_mapsFragment_to_noticiaFragment"
+            app:destination="@id/noticiaFragment" />
+    </fragment>
+</navigation>

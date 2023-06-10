@@ -133,7 +133,7 @@ public class Utils {
                             R.anim.fade_in,
                             R.anim.slide_out
                     );
-                    ft.replace(R.id.drawer_layout, new NuevaTemporadaFragment(a.getSupportFragmentManager(), new DAOtemporada()));
+                    ft.replace(R.id.drawer_layout, new NuevaTemporadaFragment(a.getSupportFragmentManager(), new DAOtemporada(), null));
                     ft.addToBackStack(null);
                     ft.setReorderingAllowed(true).commit();
                 }

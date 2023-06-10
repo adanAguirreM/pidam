@@ -1,6 +1,7 @@
 package com.example.f1fan.modelo.DAO;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -11,6 +12,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -22,6 +24,15 @@ public class DAOtemporada {
     public DAOtemporada() {
         bd = new BD();
         fb = bd.getDB();
+    }
+
+    public void eliminaTemporada(Temporada t) {
+        fb.collection("temporadas").document(t.getId()).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                BDestatica.deleteTemporada(t);
+            }
+        });
     }
 
     public void getTemporadas() {
@@ -48,12 +59,12 @@ public class DAOtemporada {
     }
 
     public void addTemporada(Temporada t) {
-        fb.collection("temporadas").add(t).addOnSuccessListener(new OnSuccessListener() {
-
-                    @Override
-                    public void onSuccess(Object o) {
-                        BDestatica.addTemporada(t);
-                    }
-                });
+        fb.collection("temporadas").add(t).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentReference> task) {
+                if (task.isSuccessful())
+                    BDestatica.addTemporada(t);
+            }
+        });
     }
 }

@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.example.f1fan.R;
 import com.example.f1fan.databinding.FragmentNuevaTemporadaBinding;
 import com.example.f1fan.modelo.DAO.DAOtemporada;
+import com.example.f1fan.modelo.pojos.BDestatica;
 import com.example.f1fan.modelo.pojos.Temporada;
 
 import java.util.Date;
@@ -53,9 +54,12 @@ public class NuevaTemporadaFragment extends Fragment {
     private FragmentManager fragmentManager;
     private DAOtemporada daoTemporada;
 
-    public NuevaTemporadaFragment(FragmentManager fragmentManager, DAOtemporada daoTemporada) {
+    private Temporada temporada;
+
+    public NuevaTemporadaFragment(FragmentManager fragmentManager, DAOtemporada daoTemporada, Temporada temporada) {
         this.fragmentManager = fragmentManager;
         this.daoTemporada = daoTemporada;
+        this.temporada = temporada;
     }
 
     private static final int UI_ANIMATION_DELAY = 300;
@@ -154,55 +158,90 @@ public class NuevaTemporadaFragment extends Fragment {
             }
         });
 
-        binding.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean error = true;
-                Temporada t = new Temporada();
-                String numCarreras = binding.numCarrerasEdit.getText().toString();
-                String piloto = binding.piCamp.getText().toString();
-                String equipo = binding.eqCamp.getText().toString();
-                String anho = binding.anhoEdit.getText().toString();
+        if (temporada != null) {
 
-                if (numCarreras.length() == 0 || piloto.length() == 0 || equipo.length() == 0 || anho.length() == 0)
-                    Toast.makeText(getContext(), "Rellena todos los campos", Toast.LENGTH_SHORT).show();
-                else {
-                    t.setN_carreras(Integer.parseInt(numCarreras));
-                    t.setPiloto(piloto);
-                    t.setEquipo(equipo);
-                    t.setAnho(Integer.parseInt(anho));
-                    Log.d("::TAG", "" + new Date().getYear() + 1900);
-                    if (t.getAnho() >= new Date().getYear() + 1900 || t.getAnho() <= 1950)
-                        Toast.makeText(getContext(), "No puedes añadir una tempoara no empezada/finalizada", Toast.LENGTH_SHORT).show();
-                    else
-                        error = false;
-                    Log.d("::TAG", "e: " + error);
+            binding.button3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    daoTemporada.eliminaTemporada(temporada);
+                    cerrar();
+                }
+            });
 
-                    if (t.getN_carreras() < 15 ) {
-                        Toast.makeText(getContext(), "Num de carreras incorrecto", Toast.LENGTH_SHORT).show();
-                        error = true;
-                    } else if (!error)
-                        error = false;
+            binding.piCamp.setText(temporada.getPiloto());
+            binding.eqCamp.setText(temporada.getEquipo());
+            binding.anhoEdit.setText(temporada.getAnho() + "");
+            binding.numCarrerasEdit.setText(temporada.getN_carreras() + "");
 
-                    if (t.getPiloto().length() < 4 ) {
-                        Toast.makeText(getContext(), "Piloto no válido", Toast.LENGTH_SHORT).show();
-                        error = true;
-                    } else if (!error)
-                        error = false;
+            binding.numCarrerasEdit.setFocusable(false);
+            binding.piCamp.setFocusable(false);
+            binding.eqCamp.setFocusable(false);
+            binding.anhoEdit.setFocusable(false);
 
-                    if (t.getEquipo().length() < 4 ) {
-                        Toast.makeText(getContext(), "Equipo no válido", Toast.LENGTH_SHORT).show();
-                        error = true;
-                    } else if (!error)
-                        error = false;
+            binding.button.setFocusable(false);
+            binding.button3.setFocusable(true);
+        } else {
+            binding.button.setFocusable(true);
+            binding.button3.setFocusable(false);
 
-                    if (!error) {
-                        daoTemporada.addTemporada(t);
-                        cerrar();
+            binding.button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    boolean error = true;
+                    Temporada t = new Temporada();
+                    String numCarreras = binding.numCarrerasEdit.getText().toString();
+                    String piloto = binding.piCamp.getText().toString();
+                    String equipo = binding.eqCamp.getText().toString();
+                    String anho = binding.anhoEdit.getText().toString();
+
+                    if (numCarreras.length() == 0 || piloto.length() == 0 || equipo.length() == 0 || anho.length() == 0)
+                        Toast.makeText(getContext(), "Rellena todos los campos", Toast.LENGTH_SHORT).show();
+                    else {
+                        t.setN_carreras(Integer.parseInt(numCarreras));
+                        t.setPiloto(piloto);
+                        t.setEquipo(equipo);
+                        t.setAnho(Integer.parseInt(anho.trim()));
+                        if (t.getAnho() >= new Date().getYear() + 1900 || t.getAnho() <= 1950)
+                            Toast.makeText(getContext(), "No puedes añadir una tempoara no empezada/finalizada", Toast.LENGTH_SHORT).show();
+                        else {
+                            boolean encontrado = false;
+                            for (int i = 0; i < BDestatica.getTemporadas().size() && encontrado == false; i++) {
+                                error = false;
+                                if (BDestatica.getTemporadas().get(i).getAnho() == Integer.parseInt(anho)) {
+                                    encontrado = true;
+                                    Toast.makeText(getContext(), "Esa temporada ya existe", Toast.LENGTH_SHORT).show();
+                                    error = true;
+                                }
+                            }
+                        }
+
+                        if (t.getN_carreras() < 10) {
+                            Toast.makeText(getContext(), "Num de carreras incorrecto", Toast.LENGTH_SHORT).show();
+                            error = true;
+                        } else if (!error)
+                            error = false;
+
+                        if (t.getPiloto().length() < 4) {
+                            Toast.makeText(getContext(), "Piloto no válido", Toast.LENGTH_SHORT).show();
+                            error = true;
+                        } else if (!error)
+                            error = false;
+
+                        if (t.getEquipo().length() < 4) {
+                            Toast.makeText(getContext(), "Equipo no válido", Toast.LENGTH_SHORT).show();
+                            error = true;
+                        } else if (!error)
+                            error = false;
+
+                        if (!error) {
+                            daoTemporada.addTemporada(t);
+                            Toast.makeText(getContext(), "Añadiendo temporada...", Toast.LENGTH_SHORT).show();
+                            cerrar();
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
 
         binding.button2.setOnClickListener(new View.OnClickListener() {
             @Override

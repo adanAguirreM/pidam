@@ -66,7 +66,7 @@ public class MyTemporadaRecyclerViewAdapter extends RecyclerView.Adapter<MyTempo
                             R.anim.fade_in,
                             R.anim.slide_out
                     );
-                    ft.replace(R.id.drawer_layout, new NuevaTemporadaFragment(fragmentManager, new DAOtemporada()));
+                    ft.replace(R.id.drawer_layout, new NuevaTemporadaFragment(fragmentManager, new DAOtemporada(), mValues.get(position)));
                     ft.addToBackStack(null);
                     ft.setReorderingAllowed(true).commit();
                 }

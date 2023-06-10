@@ -110,4 +110,9 @@ public class BDestatica {
     public static void deletePilot(Piloto p) {
         pilotos.remove(p);
     }
+
+    public static void deleteTemporada(Temporada t) {
+        temporadas.remove(t);
+    }
+
 }

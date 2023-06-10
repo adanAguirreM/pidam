@@ -24,40 +24,10 @@
         android:id="@+id/noticiaFragment"
         android:name="com.example.f1fan.ui.noticiaView.NoticiaFragment"
         android:label="fragment_noticia_list"
-        tools:layout="@layout/fragment_noticia_list" >
-        <action
-            android:id="@+id/action_noticiaFragment_to_slideshowFragment"
-            app:destination="@id/slideshowFragment"
-            app:enterAnim="@anim/fade_in"
-            app:exitAnim="@anim/fade_out"
-            app:popEnterAnim="@anim/slide_in"
-            app:popExitAnim="@anim/slide_out" />
-        <action
-            android:id="@+id/action_noticiaFragment_to_inicio"
-            app:destination="@id/inicio" />
-        <action
-            android:id="@+id/action_noticiaFragment_to_slideshowFragment2"
-            app:destination="@id/slideshowFragment2" />
-        <action
-            android:id="@+id/action_noticiaFragment_to_mapsFragment"
-            app:destination="@id/mapsFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_noticia_list" />
     <fragment
         android:id="@+id/mapsFragment"
         android:name="com.example.f1fan.ui.map.MapsFragment"
         android:label="fragment_maps"
-        tools:layout="@layout/fragment_maps" >
-        <action
-            android:id="@+id/action_mapsFragment_to_slideshowFragment"
-            app:destination="@id/slideshowFragment" />
-        <action
-            android:id="@+id/action_mapsFragment_to_slideshowFragment2"
-            app:destination="@id/slideshowFragment2" />
-        <action
-            android:id="@+id/action_mapsFragment_to_inicio"
-            app:destination="@id/inicio" />
-        <action
-            android:id="@+id/action_mapsFragment_to_noticiaFragment"
-            app:destination="@id/noticiaFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_maps" />
 </navigation>
